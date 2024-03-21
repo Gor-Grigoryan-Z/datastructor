@@ -7,7 +7,7 @@ class Node():
         self.right = None                                # Right Child of Node
         self.color = 1                                   # Red Node as new node is always inserted as Red Node
 
-class RBTree():
+class RedBlackTree():
     def __init__(self):
         self.NULL = Node(0)
         self.NULL.color = 0
@@ -204,13 +204,13 @@ class RBTree():
 
         y = z
         y_original_color = y.color                          # Store the color of z- node
-        if z.left == self.NULL :                            # If left child of z is NULL
+        if z.left == self.NULL :                        
             x = z.right                                     # Assign right child of z to x
             self.__rb_transplant ( z , z.right )            # Transplant Node to be deleted with x
-        elif (z.right == self.NULL) :                       # If right child of z is NULL
+        elif (z.right == self.NULL) :                       
             x = z.left                                      # Assign left child of z to x
             self.__rb_transplant ( z , z.left )             # Transplant Node to be deleted with x
-        else :                                              # If z has both the child nodes
+        else :                                            
             y = self.minimum ( z.right )                    # Find minimum of the right sub tree
             y_original_color = y.color                      # Store color of y
             x = y.right
