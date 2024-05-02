@@ -1,3 +1,6 @@
+from collections import deque
+
+
 class node:
 	def __init__(self,value=None):
 		self.value=value
@@ -92,6 +95,23 @@ class AVLTree:
 			self._print_tree(cur_node.left_child)
 			print ('%s, h=%d'%(str(cur_node.value),cur_node.height))
 			self._print_tree(cur_node.right_child)
+
+	def levelOrder(self):
+		if not self.root:
+			return
+
+		queue = deque()
+		queue.append(self.root)
+
+		while queue:
+			node = queue.popleft()
+			print(node.value, end=" ")
+
+			if node.left_child:
+				queue.append(node.left_child)
+
+			if node.right_child:
+				queue.append(node.right_child)
 
 	def height(self):
 		if self.root!=None:
@@ -314,6 +334,28 @@ class AVLTree:
 		return cur_node.height
 
 	def taller_child(self,cur_node):
+
 		left=self.get_height(cur_node.left_child)
 		right=self.get_height(cur_node.right_child)
 		return cur_node.left_child if left>=right else cur_node.right_child
+	
+
+
+
+
+bst = AVLTree()
+# bst.insert(10)
+# bst.insert(20)
+# bst.insert(30)
+# bst.insert(5)
+# bst.insert(4)
+# bst.insert(2)
+
+
+bst.insert(500)
+bst.insert(50)
+bst.insert(400)
+bst.insert(300)
+bst.insert(600)
+bst.insert(100)
+bst.levelOrder()

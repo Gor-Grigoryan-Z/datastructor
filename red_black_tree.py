@@ -252,7 +252,7 @@ class RedBlackTree():
 
 
 if __name__ == "__main__":
-    bst = RBTree()
+    bst = RedBlackTree()
 
     bst.insertNode(10)
     bst.insertNode(20)
@@ -263,6 +263,6 @@ if __name__ == "__main__":
 
     bst.print_tree()
 
-    print("\nAfter deleting an element")
-    bst.delete_node(2)
-    bst.print_tree()
+    # print("\nAfter deleting an element")
+    # bst.delete_node(2)
+    # bst.print_tree()

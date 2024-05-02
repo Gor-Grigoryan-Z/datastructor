@@ -1,3 +1,6 @@
+from collections import deque
+
+
 class Node:
 	def __init__(self, value) -> None:
 		self.value = value
@@ -49,6 +52,23 @@ class BinaryTree:
 			self._postOrder(current.left)
 			print(current.value)
 			self._postOrder(current.right)
+
+	def levelOrder(self):
+		if not self.root:
+			return
+
+		queue = deque()
+		queue.append(self.root)
+
+		while queue:
+			node = queue.popleft()
+			print(node, end=" ")
+
+			if node.left:
+				queue.append(node.left)
+
+			if node.right:
+				queue.append(node.right)
 
 	def inOrder(self):
 		self._inOrder(self.root)
@@ -129,6 +149,7 @@ tree.insert(300)
 print(tree.postOrder())
 print(tree.delete(50))
 print(tree.search(50))
-print("-----------------------]]-----------------------------")
-print("---------------------------------------------------z-")
+print("----------------------------------------------------")
+print("----------------------------------------------------")
 print(tree.inOrder())
+tree.levelOrder()
